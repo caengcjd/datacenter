@@ -5,7 +5,8 @@
   "scripts": {
     "init": "node ./bin/index.js",
     "start": "./node_modules/.bin/webpack -d --progress --colors --watch",
-    "build": "./node_modules/.bin/webpack -d"
+    "build": "./node_modules/.bin/webpack -d",
+    "deploy": "pm2 deploy ecosystem.json production"
   },
   "dependencies": {
     "handlebars": "^4.0.5",
