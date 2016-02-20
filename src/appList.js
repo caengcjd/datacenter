@@ -13,13 +13,14 @@
  require('./css/animation.css');
  require('./css/base.css');
  require('./css/appList.css');
+ require('./js/dropdown.js');
+ require('./js/tooltip.js');
+ require('./js/jquery.waypoints.min.js');
+ require('./js/base.js');
 
-require('./js/dropdown.js');
-require('./js/tooltip.js');
-require('./js/jquery.waypoints.min.js');
-const Handlebars = require('handlebars');
-require('./js/base.js');
-
+var Handlebars = require('handlebars');
+var pager = 1;
+var pagerOffset = 20;
 
 /* ------------------------------------------------------------
  * handlebars helpers
@@ -29,9 +30,9 @@ require('./js/base.js');
  });
 
 
- Handlebars.registerHelper('inc', function(value, options)
+ Handlebars.registerHelper('appIndex', function(value, options)
  {
-     return parseInt(value) + 1;
+     return (pager - 1) * pagerOffset + (parseInt(value) + 1);
  });
 
 
@@ -57,7 +58,6 @@ function getAppName() {
 
 $(function () {
     var appName = getAppName();
-    var pager = 1;
     $('#appName').html(appName);
     $.when( $.ajax( 'http://121.196.228.76/dc/search/' + appName))
     .then(function( data, textStatus, jqXHR ) {
@@ -68,25 +68,23 @@ $(function () {
       const template = Handlebars.compile(source);
       const template2 = Handlebars.compile(source2);
       const template3 = Handlebars.compile(source3);
-      console.log();
       $('.card-list').append(template(data.rank));
       $('.word-table').html(template2(data.word));
       $('.title').html(template3(data));
       scrollSpyCards();
-      pager ++;
     });
 
 
     $('.next-page').on('click', loadAppList);
 
     function loadAppList() {
+        pager ++;
         $.when( $.ajax( 'http://121.196.228.76/dc/search/' + appName + '/' + pager))
         .then(function( data, textStatus, jqXHR ) {
           const source = $('#app-template').html();
           const template = Handlebars.compile(source);
           $('.card-list').append(template(data.rank));
           scrollSpyCards();
-          pager ++;
         });
     }
 
