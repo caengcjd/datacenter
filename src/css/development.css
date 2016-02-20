@@ -1,0 +1,45 @@
+.header {
+    height: 270px;
+}
+.Liz-devel-nav {
+    text-align: center;
+    cursor: pointer;
+}
+.Liz-devel-nav>li {
+    margin: 0 20px;
+    padding: 10px 0;
+    color: rgba(0, 0, 0, .6);
+    text-decoration: none;
+    background: #C0C0C0;
+}
+.Liz-devel-nav>li.active {
+    background: #44bcbc;
+    color: #FFFFFF;
+}
+.panel-heading:hover {
+    background: #44bcbc!important;
+}
+.panel-heading:hover .panel-a>pre {
+    color: #FFFFFF;
+    text-transform: capitalize;
+    animation: comeRight 0.3s ease both;
+}
+.panel-title>a {
+    list-style-type: none;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.panel-body {
+    padding: 50px 0!important;
+}
+.left20p{
+    padding-left: 26%;
+}
+.panel-a>pre {
+    font-size: 16px;
+    animation: comeLeft 0.3s ease both;
+}
+.employTitleUp {
+    text-transform: uppercase;
+    /*英文字母全部大写*/
+}

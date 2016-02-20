@@ -1,0 +1,36 @@
+:root {
+    --active-link: rgb(243, 187, 30);
+}
+
+
+/* header */
+
+.header {
+    height: 760px;
+    background-image: url('../images/banner.png');
+}
+
+.header .jumbotron {
+    .form-control {
+        width: 524px;
+        height: 56px;
+        border-radius: 4px;
+        font-size: 18px;
+        border: 1px solid #fff;
+        box-shadow: inset 0 1px 1px rgb(255, 255, 255);
+    }
+    .form-control:focus {
+        border: 2px solid var(--active-link);
+    }
+
+    .input-group-btn .btn-default {
+        width: 60px;
+        height: 56px;
+        margin-left: 13px;
+        border-radius: 4px;
+        background-color: var(--active-link);
+        border-color: var(--active-link);
+        color: #fff;
+        font-size: 24px;
+    }
+}

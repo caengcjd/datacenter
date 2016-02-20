@@ -1,0 +1,188 @@
+/*内容从下往上滑出*/
+
+.animation-slide-up {
+    animation: ani-slide-up 1.2s cubic-bezier(0, 0, 0.18, 0.8) both;
+    position: relative;
+}
+
+@keyframes ani-slide-up {
+    0% {
+        top: 100px;
+        opacity: 0;
+    }
+    100% {
+        top: 0px;
+        opacity: 1;
+    }
+}
+
+
+
+/**
+ * 引导页品牌切换
+ */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+      }
+}
+/**
+ * 引导页背景滑动
+ */
+
+@keyframes toRight {
+    from {
+        opacity: 0;
+        background-position-x: -1000px;
+    }
+}
+
+
+@keyframes toLeft {
+    from {
+        opacity: 0;
+        background-position-x: 1000px;
+    }
+}
+/**
+ * 引导页logo变换
+ */
+
+
+@keyframes toTop {
+  from {
+    transform:translate3D(0,220px,0);
+    opacity: 0;
+  }
+  to {
+    transform:translate3D(0,0,0);
+    opacity: 1;
+    }
+}
+
+@keyframes log-toLeftBotton{
+  0%{
+      transform:translate3D(50px,-50px,0);
+      opacity: 0;
+  }
+  10%{
+      transform:translate3D(50px,-50px,0);
+      opacity: 0.6;
+  }
+  100%{
+    transform:translate3D(0,0,0);
+    opacity: 1;
+  }
+}
+
+@keyframes log-toLeftTop{
+  0%{
+      transform:translate3D(50px,50px,0);
+      opacity: 0;
+  }
+  10%{
+      transform:translate3D(50px,50px,0);
+      opacity: 0.6;
+  }
+  100%{
+    transform:translate3D(0,0,0);
+    opacity: 1;
+  }
+}
+
+@keyframes log-toRightBotton{
+  0%{
+      transform:translate3D(-50px,-50px,0);
+      opacity:0;
+  }
+  10%{
+      transform:translate3D(-50px,-50px,0);
+      opacity:0.6;
+  }
+  100%{
+    transform:translate3D(0,0,0);
+    opacity: 1;
+  }
+}
+
+@keyframes log-toRight {
+  0%{
+      transform:translate3D(-50px,0,0);
+      opacity: 0;
+  }
+  10%{
+      transform:translate3D(-50px,0,0);
+      opacity:0.6;
+  }
+  100%{
+    transform:translate3D(0,0,0);
+    opacity: 1;
+  }
+}
+
+@keyframes log-toBotton{
+  0%{
+      transform:translate3D(-50px,0,0);
+      opacity: 0;
+  }
+  10%{
+      transform:translate3D(-50px,0,0);
+      opacity:0.6;
+  }
+  100%{
+    transform:translate3D(0,0,0);
+    opacity:1;
+  }
+}
+
+@keyframes log-toTop {
+  0%{
+      transform:translate3D(50px,0,0);
+      opacity: 0;
+  }
+  10%{
+      transform:translate3D(50px,0,0);
+      opacity:0.6;
+  }
+  100%{
+    transform:translate3D(0,0,0);
+    opacity:1;
+  }
+}
+/**
+ * 职位滑动
+ */
+
+@keyframes comeRight {
+
+    to {
+        transform: translate(100px, 0);
+    }
+}
+
+
+@keyframes comeLeft {
+    from{
+        transform: translate(100px, 0);
+  }
+    to {
+        transform: translate(0px, 0);
+    }
+}
+
+/**
+ * header page text slide down
+ */
+
+ @keyframes ani-headertext-slide-down {
+     from{
+        transform: translateY(100px) translateX(-50%);
+   }
+     to {
+         transform: translateY(-50%) translateX(-50%);
+     }
+ }

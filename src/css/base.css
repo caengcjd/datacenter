@@ -1,0 +1,282 @@
+:root {
+    --active-link:  rgb(243, 187, 30);
+    --custom-color: rgb(243, 187, 30);
+}
+
+/*初始化*/
+
+body {
+    font: 12px/1.5 "Microsoft Yahei","Helvetica Neue";
+    -webkit-font-smoothing: antialiased;
+}
+
+ul, li {
+    padding: 0;
+}
+
+.opacity0 {
+    opacity: 0;
+}
+
+.container, .header, .footer{
+    min-width: 1200px;
+}
+
+.btn-custom {
+    background-color: var(--custom-color);
+    color: #fff;
+    transition: all 0.3s;
+    &:hover {
+        color: #fff;
+        background-color: color(var(--custom-color) lightness(+ 10%));
+    }
+}
+
+.jumbotron {
+    background-color: transparent;
+    padding-top: 286px;
+    h1 {
+        font-size: 36px;
+        color: #fff;
+    }
+}
+
+.header {
+    position: relative;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.footer {
+    font-size: 14px;
+    font-family: '华文细黑';
+    color: #fff;
+    background-color: #151f29;
+    height: 111px;
+    line-height: 111px;
+}
+
+#footer.fixed {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+
+/**
+ *头部导航
+ */
+
+.navbar {
+    transition: all 0.4s;
+    font-size: 16px;
+    background-color: transparent;
+}
+
+.container-fluid>.navbar-header {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.navbar-brand {
+    img {
+        width: 150px;
+    }
+}
+.navbar-nav {
+    float: left;
+    margin: 1em 0;
+}
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        display: none;
+    }
+}
+.navbar-nav>li {
+    float: left;
+}
+
+.navbar-nav>li>a {
+    color: rgb(255, 255, 255);
+    transition: all .28s cubic-bezier(.4, 0, .2, 1);
+}
+
+.navbar-right {
+    float: right!important;
+    margin-right: -15px;
+}
+.navbar-form {
+    margin-top: 25px;
+    width: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    border: 0;
+    box-shadow: none;
+    .login-btn, .register-btn {
+        font-size: 14px;
+        border: 2px solid #fff;
+        padding: 4px 15px;
+        border-radius: 24px;
+        background-color: transparent;
+        transition: all 0.28s cubic-bezier(.4, 0, .2, 1);
+        color: #fff;
+    }
+    .login-btn:hover, .register-btn:hover {
+        color: var(--active-link);
+        background-color: #fff;
+    }
+    .register-btn {
+        margin-left: 10px;
+    }
+}
+
+
+.navbar .nav>li>a:focus, .navbar .nav>li>a:hover {
+    background-color: rgba(128, 121, 121, 0.36);
+    border-radius: 5px;
+}
+
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    background-color: transparent;
+}
+
+.navbar-nav>li>.dropdown-menu {
+    background-color: rgba(128, 121, 121, 0.36);
+}
+
+.navbar-nav>li>.dropdown-menu li a {
+    color: #fff;
+}
+
+.navbar-nav>li>.dropdown-menu li a:hover {
+    color: var(--active-link);
+    background-color: transparent;
+}
+
+
+
+
+
+
+
+
+/*清除padding*/
+
+.Liz-padding-0 {
+    padding: 0;
+}
+.Liz-padding-right-0 {
+    padding-right: 0;
+}
+.Liz-padding-left-0 {
+    padding-left: 0;
+}
+.Liz-padding-top-0 {
+    padding-top: 0;
+}
+.Liz-padding-bottom-0 {
+    padding-bottom: 0;
+}
+.Liz-padding-vertical-lg {
+    padding: 15px 0;
+}
+.Liz-padding-vertical-35px {
+    padding: 35px;
+}
+.Liz-padding-vertical-32px {
+    padding: 32px auto;
+}
+.Liz-padding-10 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.Liz-padding-top-10px {
+    padding-top: 10px;
+}
+
+/*清除margin*/
+
+.Liz-margin-0 {
+    margin: 0!important;
+}
+.Liz-margin-right-0 {
+    margin-right: 0;
+}
+.Liz-margin-left-0 {
+    margin-left: 0;
+}
+.Liz-margin-top-0 {
+    margin-top: 0!important;
+}
+.Liz-margin-bottom-0 {
+    margin-bottom: 0!important;
+}
+.margin-vertical-lg {
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+.margin-vertical-xlg {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.margin-left-30px {
+    margin-left: 30px;
+}
+
+.margin-top-50px {
+    margin-top: 50px;
+}
+
+.margin-bottom-30px {
+    margin-bottom: 30px;
+}
+
+.margin-bottom-50px {
+    margin-bottom: 50px;
+}
+
+
+/* flex  */
+.flex {
+    display: flex;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-2 {
+    flex: 2;
+}
+
+.flex-align-center {
+    align-items: center;
+}
+
+.flex-align-self-center {
+    align-self: center;
+}
+
+.flex-justify-center {
+    justify-content: center;
+}
+
+.flex-direction-col {
+    flex-direction: column;
+}
+
+
+.transition {
+    transition: all 0.3s;
+}
+
+.header-img-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

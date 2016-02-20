@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>应用详情</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <!-- Core CSS -->
+        <!-- <% for (var css in htmlWebpackPlugin.files.css) { %>
+        <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+        <% } %> -->
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+        <!--[if lt IE 9]> <script src="js/html5shiv.js"></script> <script src="js/respond.min.js"></script> <![endif]-->
+    </head>
+    <body>
+        <!-- Header -->
+        <div id="header" class="header">
+            <!-- 菜单栏 -->
+            <nav class="navbar" id="navbar"></nav>
+        </div>
+
+        <div class="animation-slide-up">
+            <div id="app－intro" class="container"></div>
+            <div class="container">
+                <!-- Nav tabs -->
+                 <ul class="nav nav-tabs" role="tablist">
+                   <li role="presentation" class="active"><a href="#appDetail" aria-controls="home" role="tab" data-toggle="tab">应用详情</a></li>
+                   <li role="presentation"><a href="#appKeywords" aria-controls="profile" role="tab" data-toggle="tab">关键词/ASO</a></li>
+                 </ul>
+
+                 <!-- Tab panes -->
+                 <div class="tab-content">
+                   <div role="tabpanel" class="tab-pane active app-info-tabpanel" id="appDetail"></div>
+                   <div role="tabpanel" class="tab-pane" id="appKeywords">
+                       <div>
+                           <div class="keywords-title">
+                               <h4>共覆盖2986个词，相比2016-01-27增加0个；搜索结果在TOP10的有514个，相比2016-01-27增加7个</h4>
+                           </div>
+                           <table class="text-center keywords-table" style="width: 100%">
+                               <thead>
+                                   <tr>
+                                       <th>
+                                           关键词
+                                           <img src="./images/ico-up-black.png" alt="" />
+                                           <img src="./images/ico-down-black.png" alt="" />
+                                       </th>
+                                       <th>
+                                           当前排名
+                                           <img src="./images/ico-up-yellow.png" alt="" />
+                                           <img src="./images/ico-down-black.png" alt="" />
+                                       </th>
+                                       <th>
+                                           搜索指数
+                                           <img src="./images/ico-up-black.png" alt="" />
+                                           <img src="./images/ico-down-black.png" alt="" />
+                                       </th>
+                                       <th>
+                                           搜索结果数
+                                           <img src="./images/ico-up-black.png" alt="" />
+                                           <img src="./images/ico-down-black.png" alt="" />
+                                       </th>
+                                       <th>
+                                           操作
+                                           <img src="./images/ico-up-black.png" alt="" />
+                                           <img src="./images/ico-down-black.png" alt="" />
+                                       </th>
+                                   </tr>
+                               </thead>
+                               <tbody>
+                                   <tr>
+                                       <td>daily</td>
+                                       <td>1 <img src="./images/ico-triangle.png" style="margin: 0 1em;"/> 0</td>
+                                       <td>1111</td>
+                                       <td>5454</td>
+                                       <td>
+                                           <img src="./images/ico-trend.png" data-toggle="tooltip" data-placement="top" title="查看近期排名趋势"/>
+                                           <img src="./images/ico-top.png" alt="" class="margin-left-30px"/>
+                                       </td>
+                                   </tr>
+                               </tbody>
+                           </table>
+
+                       </div>
+
+                   </div>
+                 </div>
+            </div>
+            <div class="Liz-border-vertical opacity0" id="footer"></div>
+        </div>
+
+
+    <!-- app-intro -->
+    <script id="app-intro-template" type="text/x-handlebars-template">
+        <li class="app-intro flex transition">
+            <img class="app-intro-img" src="{{artworkurl100}}"/>
+            <div class="flex-1 app-intro-content">
+                <h4>{{name}}</h4>
+                <p>
+                    <table style="width: 420px">
+                        <thead>
+                            <tr>
+                                <th>开发商</th>
+                                <th>APP ID</th>
+                                <th>更新时间</th>
+                                <th>版本</th>
+                                <th>大小</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{artistname}}</td>
+                                <td>{{appid}}</td>
+                                <td>{{date currentversionreleasedate}}</td>
+                                <td>{{version}}</td>
+                                <td>{{file filesizebytes}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </p>
+            </div>
+        </li>
+    </script>
+
+    <!-- app-detail -->
+    <script id="app-detail-template" type="text/x-handlebars-template">
+        <dl>
+           <dt>基本信息</dt>
+           <dd>
+               <table class="text-center info-table" style="width: 300px">
+                   <thead>
+                       <tr>
+                           <th>版本</th>
+                           <th>大小</th>
+                           <th>是否免费</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                       <tr>
+                           <td>{{version}}</td>
+                           <td>{{file filesizebytes}}</td>
+                           <td>免费</td>
+                       </tr>
+                   </tbody>
+               </table>
+           </dd>
+         </dl>
+
+         <dl>
+             <dt>应用描述</dt>
+             <dd>
+                 <ul>
+                    {{description description}}
+                 </ul>
+             </dd>
+         </dl>
+    </script>
+</body>
+</html>

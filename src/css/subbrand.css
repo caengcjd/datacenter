@@ -1,0 +1,111 @@
+body,html{
+    height: 100%;
+}
+.header {
+    height: 72px;
+    background: rgba(192, 192, 192, .2);
+}
+
+.brandBg {
+    background-image: url('../images/page3/bg.png');
+    height: 100%;
+    margin-top: -72px;
+    padding-top: 70px;
+    margin-bottom: -79px;
+    padding-bottom: 77px;
+}
+.rect{
+    width: 0;
+    height: 30px;
+    border-right: 1px solid #FFFFFF;
+}
+.brandListBg {
+    background: rgba(225, 225, 225, .5);
+    height: 80px;
+    align-items: center;
+
+}
+
+.section {
+    width: 100%;
+}
+
+.verticalCenter {
+    position: relative;
+    .Center {
+        position: absolute;
+        z-index: 99;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-80%) translateX(-50%);
+    }
+}
+.brandIpc{
+        padding: 20px;
+}
+.brandImgList {
+    .brandImgBox{
+    	position: relative;
+        height: 100%;
+        display: inline-block;
+        opacity: 0;
+        transition: all 0.8s ease;
+    }
+}
+
+.icoList{
+	width: 100%;
+	position: absolute;
+	top: 90%;
+	display: flex;
+	li{
+		flex:1;
+		margin:0 10px;
+	}
+}
+.weixinIco2{
+	width: 140px;
+	height: 147px;
+	position: absolute;
+	bottom: 60px;
+	left: 50%;
+	transform:translateX(-50%);
+	background-image:url('../images/page3/erweima.png'); 
+}
+.tianmaoIco2{
+    width: 140px;
+    height: 147px;
+    position: absolute;
+    bottom: 60px;
+    left: 74%;
+    transform:translateX(-50%);
+    background-image:url('../images/page3/erweima.png'); 
+}
+.brandImgBox{
+    
+}
+.Brandbg1{
+    background-image: url('../images/page3/brand1.png');
+    background-size: cover;
+    background-position: 50%;
+}   
+.Brandbg2{
+    background-image: url('../images/page3/brand2.png');
+    background-size:auto 140%;
+    background-position: 50% 0%;
+} 
+.Brandbg3{
+    background-image: url('../images/page3/brand3.png');
+    background-size:auto 150%;
+    background-position: 50% 0%;
+} 
+.Brandbg4{
+    background-image: url('../images/page3/brand4.png');
+    background-size:auto 122%;
+    background-position: 50% 0%;
+} 
+.Brandbg5{
+    background-image: url('../images/page3/brand5.png');
+    background-size:auto 141%;
+    background-position: 100% 0%;
+} 

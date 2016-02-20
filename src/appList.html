@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>查询结果</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <!-- Core CSS -->
+        <!-- <% for (var css in htmlWebpackPlugin.files.css) { %>
+        <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+        <% } %> -->
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+        <!--[if lt IE 9]> <script src="js/html5shiv.js"></script> <script src="js/respond.min.js"></script> <![endif]-->
+    </head>
+    <body>
+        <!-- Header -->
+        <div id="header" class="header">
+            <!-- 菜单栏 -->
+            <nav class="navbar" id="navbar"></nav>
+        </div>
+
+        <div class="animation-slide-up">
+            <div class="container word-table margin-top-50px"></div>
+            <div class="container">
+                <div class="title"></div>
+                <ul class="card-list"></ul>
+                <div class="text-center margin-vertical-lg opacity0 next-page">
+                    <a class="btn btn-custom">下一页</a>
+                </div>
+            </div>
+            <div class="Liz-border-vertical opacity0" id="footer"></div>
+        </div>
+
+
+
+        <!-- title template -->
+        <script id="title-template" type="text/x-handlebars-template">
+            <h2>「<span>{{word.word}}</span>」搜索结果</h2>
+            <p>(共
+                <span>{{arrayLength rank.apps}}</span>条)</p>
+        </script>
+
+        <!--  card template -->
+        <script id="app-template" type="text/x-handlebars-template">
+            {{#if apps}}
+                {{#each apps}}
+                <li class="card flex transition">
+                    <img class="card-img" src={{artworkUrl60}}/>
+                    <div class="flex-1 card-content">
+                        <h4>{{inc @index}}、{{this.name}}</h4>
+                        <p>
+                            encent Technology (Shenzhen) Company Limited
+                        </p>
+                    </div>
+                    <div class="card-button flex-align-self-center">
+                        <a href="#" class="btn btn-primary">添加到我的应用</a>
+                    </div>
+                </li>
+                {{/each}}
+            {{else}}
+                <p class="app-no-result">没有搜索到结果。</p>
+            {{/if}}
+    </script>
+
+
+    <!-- word template -->
+    <script id="word-template" type="text/x-handlebars-template">
+        <table class="table table-bordered text-center" style="width: 660px">
+            <tbody>
+                <tr>
+                    <th class="word">关键字</th>
+                    <th class="hints">搜索热度
+                        <span data-toggle="tooltip" title="" class="glyphicon glyphicon-question-sign mobile-hide" data-original-title="搜索指数来源于 App Store 官方数据。该指数代表每个关键词在App Store的搜索热度。一般来说，指数越高，则该词每天被搜索次数也越多。"></span>
+                    </th>
+                    <th class="tips mobile-hide">搜索结果数
+                        <span data-toggle="tooltip" title="" class="glyphicon glyphicon-question-sign mobile-hide" data-original-title="搜索联想词指在 App Store 搜索框中输入该关键词时，下拉出现的自动联想推荐的词汇。"></span>
+                    </th>
+                </tr>
+                <tr>
+                    <td>{{word}}</td>
+                    <td>
+                        <span class="text-danger">{{priority}}</span>
+                    </td>
+                    <td>
+                        <span class="text-danger">{{arrayLength suggestions}}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </script>
+</body>
+</html>

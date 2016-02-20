@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>注册</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <!-- Core CSS -->
+        <!-- <% for (var css in htmlWebpackPlugin.files.css) { %>
+    <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+    <% } %> -->
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+        <!--[if lt IE 9]> <script src="js/html5shiv.js"></script> <script src="js/respond.min.js"></script> <![endif]-->
+    </head>
+    <body class="flex flex-direction-col">
+        <div class="header">
+            <img class="header-img-center" src="./images/logo-regsiter.png" alt="" />
+        </div>
+
+        <div class="flex-1 container">
+            <div class="row margin-top-50px">
+                <div class="center-block" style="width: 320px">
+                    <form id="signin" class="form-horizontal" action="/index.php/account/signinForm" method="post">
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input id="username" value="" type="email" name="username" class="form-control" placeholder="公司名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input id="username" value="" type="email" name="username" class="form-control" placeholder="应用名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input id="username" value="" type="email" name="username" class="form-control" placeholder="邮箱">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input id="password" type="password" name="password" class="form-control" placeholder="密码(字母，数字，至少6位)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input id="password" type="password" name="password" class="form-control" placeholder="确认密码">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <button id="submit" type="submit" class="btn btn-custom">注册
+                                </button>
+                            </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <a href="/index.php/account/signup" class="btn btn-block btn-border-custom">已有账号？登录
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <a href="./index.html" class="color-custom pull-right">返回首页</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,118 @@
+.header {
+    height: 270px;
+}
+.logo1-box {
+    background-size: cover;
+    background: url("../images/page6/logo1-img.png");
+    height: 650px;
+    background-position: 50% 0%;
+}
+.logo2-box {
+    background-size: cover;
+    background: url("../images/page6/logo2-img.png");
+    height: 330px;
+    background-position: 50% 10%;
+}
+.logo3-box {
+    background-size: cover;
+    background: url("../images/page6/logo3-img.png");
+    height: 287px;
+    background-position: 50% 17%;
+}
+.logo4-box {
+    background-size: cover;
+    background: url("../images/page6/logo4-img.png");
+    height: 426px;
+    background-position: 50% 7%;
+}
+.logo5-box {
+    background-size: cover;
+    background: url("../images/page6/logo5-img.png");
+    height: 829px;
+    background-position: 50% 0%;
+}
+
+.logo1-box, .logo2-box, .logo3-box, .logo4-box, .logo5-box {
+    position: relative;
+    border: 1px solid #ffffff;
+    animation: fadeIn 0.3s ease both;
+}
+.logo1-box:before, .logo2-box:before, .logo3-box:before, .logo4-box:before, .logo5-box:before {
+    display: table;
+    position: absolute;
+    bottom: -5px;
+    z-index: 99;
+    cursor: pointer;
+}
+.log1:after, .log2:after, .log3:after, .log4:after, .log5:after {
+    display: table;
+    position: absolute;
+    bottom: -5px;
+    z-index: 99;
+    cursor: pointer;
+}
+.log1:before, .log2:before, .log3:before, .log4:before, .log5:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    z-index: 99;
+    padding-bottom: 65px;
+}
+.log1, .log2, .log3, .log4, .log5 {
+    display: none;
+    position: absolute;
+    background: rgba(0, 0, 0, .5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.logo1-box:before {
+    content: url("../images/page6/logo1.png");
+}
+.logo2-box:before {
+    content: url("../images/page6/logo2.png");
+}
+.logo3-box:before {
+    content: url("../images/page6/logo3.png");
+}
+.logo4-box:before {
+    content: url("../images/page6/logo4.png");
+}
+.logo5-box:before {
+    content: url("../images/page6/logo5.png");
+}
+.logo1-box:hover .log1, .logo2-box:hover .log2, .logo3-box:hover .log3, .logo4-box:hover .log4, .logo5-box:hover .log5 {
+    display: block;
+}
+.log1:hover.log1:before {
+    content: url("../images/page6/log1.png");
+}
+.log2:hover.log2:before {
+    content: url("../images/page6/log5.png");
+}
+.log3:hover.log3:before {
+    content: url("../images/page6/log3.png");
+}
+.log4:hover.log4:before {
+    content: url("../images/page6/log2.png");
+}
+.log5:hover.log5:before {
+    content: url("../images/page6/log4.png");
+}
+.log1:after {
+    content: url("../images/page6/logo1.png");
+}
+.log2:after {
+    content: url("../images/page6/logo1.png");
+}
+.log3:after {
+    content: url("../images/page6/logo1.png");
+}
+.log4:after {
+    content: url("../images/page6/logo1.png");
+}
+.log5:after {
+    content: url("../images/page6/logo1.png");
+}

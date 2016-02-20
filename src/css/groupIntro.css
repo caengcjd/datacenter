@@ -1,0 +1,167 @@
+.header {
+    height: 270px;
+}
+
+/**
+ * chairmen
+ */
+
+.chairmanText {
+    max-height: 553px;
+    overflow: auto;
+}
+
+/**
+ *group honor
+ */
+
+#slider {
+    width: 1200px;
+    height: 390px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    font-size: 16px;
+    user-select: none;
+}
+#slider ul {
+    width: 6000px;
+    position: absolute;
+}
+#slider ul li {
+    width: 1200px;
+    float: left;
+}
+#point {
+    position: absolute;
+    display: inline-block;
+    float: left;
+    top: 360px;
+    left: 567px;
+    font-size: 60px;
+    z-index: 2;
+}
+#point span {
+    float: left;
+    height: 8px;
+    width: 8px;
+    border: 1px solid #44bcbc;
+    border-radius: 5px;
+    background: #ffffff;
+    margin-left: 10px;
+}
+#point .on {
+    background: #44bcbc;
+}
+.table tbody tr th:first-child{
+    width: 178px;
+}
+/**
+ * development history
+ */
+
+#time-axis {
+    overflow: hidden;
+}
+.time-axis {
+    margin-top: 15%;
+    margin-bottom: 5%;
+    background-image: url('../images/page1/line.png');
+    background-repeat: repeat-x;
+    height: 10px;
+    transition: all 0.4s ease-out;
+    background-position: 76px 0;
+}
+.time-years {
+    font-size: 0;
+    transition: all 0.4s ease-out;
+    left: 0;
+    margin-left: 550px;
+    position: relative;
+}
+.time-years li {
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    font-size: 16px;
+    padding-bottom: 55px;
+    margin-top: -30px;
+    width: 120px;
+}
+.time-years li.active {
+    font-size: 20px;
+    color: #44bcbc;
+}
+.time-arrow {
+    height: 10px;
+    width: 15px;
+    position: absolute;
+    top: 168px;
+    left: 50%;
+    background: url("../images/page1/top-angle.png") no-repeat;
+    transition: all 0.4s ease-out;
+}
+
+.time-label {
+    margin-left: -80px;
+    width: 300px;
+    line-height: 24px;
+    font-size: 20px;
+    color: #888;
+    position: absolute;
+    bottom: 167px;
+    left: 50%;
+    transition: all 0.4s ease-out;
+}
+
+/**
+ * group culture
+ */
+
+.Liz-scroll {
+    margin-right: 20px;
+    padding-right: 20px;
+}
+
+/* 滚动条整体部分width,height,background,border */
+
+.Liz-scroll::-webkit-scrollbar {
+    width: 5px;
+    height: 10px;
+}
+
+/* 滚动条两端的按钮。可以用display:none让其不显示 */
+
+.Liz-scroll::-webkit-scrollbar-button {
+    display: none;
+}
+
+/*   内层轨道，滚动条中间部分（除去） */
+
+.Liz-scroll::-webkit-scrollbar-track-piece {
+    background: #C0C0C0;
+}
+
+/*  滚动条里面可以拖动的那部分 */
+
+.Liz-scroll::-webkit-scrollbar-thumb {
+    background: #44bcbc;
+    border-radius: 4px;
+}
+
+
+/* 缩放过渡  */
+.transition-zoom-up {
+    transform: scale(1);
+    transition: all 0.4s;
+}
+
+.transition-zoom-up:hover {
+    transform: scale(1.2);
+}
+
+.background-center {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
