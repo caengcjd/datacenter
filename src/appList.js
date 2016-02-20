@@ -62,20 +62,30 @@ $(function () {
     $.when( $.ajax( 'http://121.196.228.76/dc/search/' + appName))
     .then(function( data, textStatus, jqXHR ) {
       console.log(data);
-      const source = $('#app-template').html();
+      if (data.type === 'app') {
+          window.location.href = './appDetail.html?id=' + appName;
+      }
+
+      const appHtml = $('#app-template').html();
+      const appsHtml = $('#apps-template').html();
+      const suggestionHtml = $('#suggestion-template').html();
       const source2 = $('#word-template').html();
       const source3 = $('#title-template').html();
-      const template = Handlebars.compile(source);
+      const appTemplate = Handlebars.compile(appHtml);
+      const appsTemplate = Handlebars.compile(appsHtml);
+      const suggestionTemplate = Handlebars.compile(suggestionHtml);
       const template2 = Handlebars.compile(source2);
       const template3 = Handlebars.compile(source3);
-      $('.card-list').append(template(data.rank));
+      $('#cardList').append(appsTemplate(data.rank));
+      $('.card-list').append(appTemplate(data.rank));
       $('.word-table').html(template2(data.word));
+      $('#suggestions').html(suggestionTemplate(data.word));
       $('.title').html(template3(data));
       scrollSpyCards();
     });
 
 
-    $('.next-page').on('click', loadAppList);
+    $(document).on('click', '.next-page', loadAppList);
 
     function loadAppList() {
         pager ++;

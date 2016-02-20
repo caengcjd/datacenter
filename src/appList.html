@@ -19,13 +19,10 @@
         </div>
 
         <div class="animation-slide-up">
-            <div class="container word-table margin-top-50px"></div>
             <div class="container">
                 <div class="title"></div>
-                <ul class="card-list"></ul>
-                <div class="text-center margin-vertical-lg opacity0 next-page">
-                    <a class="btn btn-custom">下一页</a>
-                </div>
+                <div class="word-table margin-vertical-lg"></div>
+                <div id="cardList"></div>
             </div>
             <div class="Liz-border-vertical opacity0" id="footer"></div>
         </div>
@@ -39,23 +36,30 @@
                 <span>{{arrayLength rank.apps}}</span>条)</p>
         </script>
 
-        <!--  card template -->
         <script id="app-template" type="text/x-handlebars-template">
+            {{#each apps}}
+            <li class="card flex transition">
+                <img class="card-img" src={{artworkUrl60}}/>
+                <div class="flex-1 card-content">
+                    <h4>{{appIndex @index}}、{{this.name}}</h4>
+                    <p>
+                        encent Technology (Shenzhen) Company Limited
+                    </p>
+                </div>
+                <div class="card-button flex-align-self-center">
+                    <a href="#" class="btn btn-primary">添加到我的应用</a>
+                </div>
+            </li>
+            {{/each}}
+        </script>
+
+        <!--  card template -->
+        <script id="apps-template" type="text/x-handlebars-template">
             {{#if apps}}
-                {{#each apps}}
-                <li class="card flex transition">
-                    <img class="card-img" src={{artworkUrl60}}/>
-                    <div class="flex-1 card-content">
-                        <h4>{{appIndex @index}}、{{this.name}}</h4>
-                        <p>
-                            encent Technology (Shenzhen) Company Limited
-                        </p>
-                    </div>
-                    <div class="card-button flex-align-self-center">
-                        <a href="#" class="btn btn-primary">添加到我的应用</a>
-                    </div>
-                </li>
-                {{/each}}
+            <ul class="card-list"></ul>
+            <div class="text-center margin-vertical-lg opacity0 next-page">
+                <a class="btn btn-custom">下一页</a>
+            </div>
             {{else}}
                 <p class="app-no-result">没有搜索到结果。</p>
             {{/if}}
@@ -64,11 +68,11 @@
 
     <!-- word template -->
     <script id="word-template" type="text/x-handlebars-template">
-        <table class="table table-bordered text-center" style="width: 660px">
+        <table class="table table-bordered text-center" style="width: 660px;table-layout: fixed">
             <tbody>
                 <tr>
-                    <th class="word">关键字</th>
-                    <th class="hints">搜索热度
+                    <th class="word" style="width: 100px">关键字</th>
+                    <th class="hints" style="width: 100px">搜索热度
                         <span data-toggle="tooltip" title="" class="glyphicon glyphicon-question-sign mobile-hide" data-original-title="搜索指数来源于 App Store 官方数据。该指数代表每个关键词在App Store的搜索热度。一般来说，指数越高，则该词每天被搜索次数也越多。"></span>
                     </th>
                     <th class="tips mobile-hide">搜索结果数
@@ -80,12 +84,20 @@
                     <td>
                         <span class="text-danger">{{priority}}</span>
                     </td>
-                    <td>
-                        <span class="text-danger">{{arrayLength suggestions}}</span>
+                    <td class="text-left">
+                        <span class="text-danger" id="suggestions"></span>
                     </td>
                 </tr>
             </tbody>
         </table>
+    </script>
+
+
+    <!-- suggestion template -->
+    <script id="suggestion-template" type="text/x-handlebars-template">
+        {{#each suggestions}}
+            <a class="btn btn-border-custom">{{this}}</a>
+        {{/each}}
     </script>
 </body>
 </html>

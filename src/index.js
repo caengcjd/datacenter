@@ -17,3 +17,8 @@
 require('./js/dropdown.js');
 require('./js/jquery.waypoints.min.js');
 require('./js/base.js');
+
+
+$(function () {
+    $('#navbar-input').hide();
+})
