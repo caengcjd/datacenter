@@ -1,0 +1,27 @@
+{
+    "apps": [
+        {
+            "name": "datacenter",
+            "script": "index.js",
+            "node_args": ["--harmony"],
+            "log_date_format": "YYYY-MM-DD HH:mm Z",
+            "instances": 1,
+            "env": {
+                "COMMON_VARIABLE": "true"
+            },
+            "env_production": {
+                "NODE_ENV": "production"
+            }
+        }
+    ],
+    "deploy": {
+        "production": {
+            "user": "nodejs",
+            "host": "120.27.152.54",
+            "ref": "origin/master",
+            "repo": "nodejs@120.27.152.54:/home/git/datacenter.git",
+            "path": "/var/nodejs/datacenter",
+            "post-deploy": "npm install ; npm run build"
+        }
+    }
+}
