@@ -8,12 +8,24 @@
 /* ------------------------------------------------------------
  * 公共依赖模块 ／ 公共函数
  * ------------------------------------------------------------ */
-
+require('autotrack');
 // function footerIsOverView() {
 //     var clientHeight = window.innerHeight || document.documentElement.clientHeight;
 //     var footerOffset = $('#footer').offset().top;
 //     return footerOffset > clientHeight - $('#footer').height();
 // }
+
+
+/* ------------------------------------------------------------
+ * google analytics
+ * ------------------------------------------------------------ */
+ $(function () {
+     window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+     ga('create', 'UA-74094643-1', 'auto');
+     ga('require', 'autotrack');
+     ga('send', 'pageview');
+ })
+
 
 /* ------------------------------------------------------------
 *	加载footer / 初始化footer

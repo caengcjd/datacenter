@@ -6,11 +6,13 @@
 /* header */
 
 .header {
-    height: 760px;
     background-image: url('../images/banner.png');
+    height: 850px;
 }
 
+
 .header .jumbotron {
+    padding-top: 21%;
     .form-control {
         width: 524px;
         height: 56px;
