@@ -7,7 +7,6 @@
 /* ------------------------------------------------------------
  * 公共依赖模块 ／ 公共函数
  * ------------------------------------------------------------ */
-require('autotrack');
 // function footerIsOverView() {
 //     var clientHeight = window.innerHeight || document.documentElement.clientHeight;
 //     var footerOffset = $('#footer').offset().top;
@@ -18,25 +17,10 @@ require('autotrack');
 /* ------------------------------------------------------------
  * google analytics
  * ------------------------------------------------------------ */
-$(function() {
-    (function(i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] ||
-            function() {
-                (i[r].q = i[r].q || []).push(arguments)
-            },
-            i[r].l = 1 * new Date();
-        a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'http//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-74094643-1', 'auto');
-    ga('require', 'autotrack');
-    ga('send', 'pageview');
-})
+ require('autotrack');
+ ga('create', 'UA-74094643-1', 'auto');
+ ga('require', 'autotrack');
+ ga('send', 'pageview');
 
 
 /* ------------------------------------------------------------
