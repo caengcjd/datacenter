@@ -24,65 +24,81 @@
                     <h2>中国总榜免费榜Top1500</h2>
                 </div>
 
-                <div class="app-kind margin-bottom-30px">
-                    <div class="flex">
-                        <div class="flex-1">
-                            <label for="">榜单类型</label>
-                            <select name="" value="免费" class="selectpicker">
-                                <option value="免费">免费</option>
-                                <option value="付费">付费</option>
-                            </select>
-                        </div>
-                        <div class="flex-1">
-                            <label for="">类别</label>
-                            <select name="" value="总榜" class="selectpicker">
-                                <option value="总榜">总榜</option>
-                                <option value="总榜">总榜</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+                <div class="nav-select clearfix"></div>
 
-                <ul class="card-list clearfix margin-bottom-50px">
-                    <div class="card col-xs-2">
-                        <div class="thumbnail">
-                            <a href="" target="_blank">
-                                <img src="http://a1.mzstatic.com/us/r30/Purple69/v4/67/02/54/67025412-3bd2-c804-ec22-1634947c1972/icon180x180.jpeg" alt="1.Faceu－激萌的特效相机，支持多人 (｡･ω･)ﾉﾞ">
-                                <div class="caption">
-                                    <h5>1.Faceu－激萌的特效相机，支持多人 (｡･ω･)ﾉﾞ</h5>
-                                    <h6>erick kuo</h6>
-                                    <h6>摄影与录像
-                                        <span>1</span>名</h6>
-                                    </div>
-                            </div>
-                            </a>
-                    </div>
-
-                </ul>
+                <ul class="card-list clearfix margin-bottom-50px"></ul>
             </div>
             <div class="Liz-border-vertical opacity0" id="footer"></div>
         </div>
 
-        <!--  card template -->
-        <script id="app-template" type="text/x-handlebars-template">
-
-            {{#each apps}}
-            <li class="card flex transition">
-                <img class="card-img" src={{artworkurl60}}/>
-                <div class="flex-1 card-content">
-                    <h4>{{inc @index}}、{{this.name}}</h4>
-                    <p>
-                        encent Technology (Shenzhen) Company Limited
-                    </p>
-                </div>
-                <div class="card-button flex-align-self-center">
-                    <a href="#" class="btn btn-primary">添加到我的应用</a>
-                </div>
-            </li>
-        {{/each}}
-    </script>
 
     <!-- word template -->
-    <script id="word-template" type="text/x-handlebars-template"></script>
+    <script id="selectpicker-template" type="text/x-handlebars-template">
+        <ul class="nav navbar-nav clearfix">
+            <li class="dropdown">
+                <span class="navbar-brand">榜单类型</span>
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">{{urlParams.genre.name}}
+                    <span class="caret eq-child"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+                    {{#each genres}}
+                    {{#if this.children}}
+                    <li class="cascade">
+                        <a href="./topList.html?genre={{this.id}}&amp;type{{urlParams.type}}" class="dropdown-toggle active" aria-expanded="false">
+                            {{this.name}}
+                            <span class="glyphicon-right glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                        <ul class="cascade-menu dropdown-menu" role="menu" style="display: none;">
+                            <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+                            {{#each this.children}}
+                            <li>
+                                <a href="./topList.html?genre={{this.id}}&amp;type{{urlParams.type}}" class="">{{this.name}}</a>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </li>
+                    {{else}}
+                    <li>
+                        <a href="./topList.html?genre={{this.id}}&amp;type={{urlParams.type}}" class="active">{{this.name}}</a>
+                    </li>
+                    {{/if}}
+                    {{/each}}
+                </ul>
+            </li>
+            <li class="dropdown">
+                <span class="navbar-brand">类别</span>
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">{{urlParams.type.typeName}}
+                    <span class="caret eq-child"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+                    {{#each types}}
+                    <li>
+                        <a href="./topList.html?genre={{urlParams.genre}}&amp;type={{this.type}}" class="active">{{this.typeName}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </li>
+        </ul>
+    </script>
+
+    <script id="app-template" type="text/x-handlebars-template">
+        {{#each content}}
+        <div class="card col-xs-2">
+            <div class="thumbnail">
+                <a href="" target="_blank">
+                    <img src="{{artworkUrl60}}" alt="1.Faceu－激萌的特效相机，支持多人 (｡･ω･)ﾉﾞ">
+                    <div class="caption">
+                        <h5>{{name}}</h5>
+                        <h6>{{artistName}}</h6>
+                        <h6>{{genreValue}}
+                            <span>{{inc @index}}</span>名</h6>
+                    </div>
+                </div>
+            </a>
+        </div>
+    {{/each}}
+    </script>
 </body>
 </html>

@@ -17,11 +17,11 @@
 /* ------------------------------------------------------------
  * google analytics
  * ------------------------------------------------------------ */
- require('autotrack');
- window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
- ga('create', 'UA-74094643-1', 'auto');
- ga('require', 'autotrack');
- ga('send', 'pageview');
+ // require('autotrack');
+ // window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ // ga('create', 'UA-74094643-1', 'auto');
+ // ga('require', 'autotrack');
+ // ga('send', 'pageview');
 
 
 /* ------------------------------------------------------------
