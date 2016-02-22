@@ -16,6 +16,7 @@
 
 require('./js/dropdown.js');
 require('./js/jquery.waypoints.min.js');
+require('./js/jquery.lazyload.js');
 const Handlebars = require('handlebars');
 require('./js/base.js');
 
@@ -58,6 +59,7 @@ $(function () {
         return ajaxApps(urlParams.type, urlParams.genre);
     }).then(function (data) {
         renderHandleBars($('#app-template'), data, $('.card-list'));
+        lazyloadImage($('.card-list .card img'));
     });
 
 
@@ -141,6 +143,10 @@ function getTypeNameFromType(types, keyword) {
     return result;
 }
 
+// 懒加载图片
+function lazyloadImage($element) {
+    $element.lazyload();
+}
 
 
 /* ------------------------------------------------------------
