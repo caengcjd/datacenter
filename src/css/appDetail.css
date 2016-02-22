@@ -34,6 +34,12 @@
 
 .app-intro-content {
     margin-left: 1rem;
+    .aritistname {
+        max-width: 240px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
 }
 
 

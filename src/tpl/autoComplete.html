@@ -1,0 +1,13 @@
+<div class="autocomplete-suggestions" style="display: none">
+
+</div>
+
+<script id="autocomplete-template" type="text/x-handlebars-template">
+    {{#each suggestions}}
+    <div class="autocomplete-suggestion" data-index="0">
+        <a href="./appList.html?app={{this}}">
+            {{autocomplete this}}
+        </a>
+    </div>
+    {{/each}}
+</script>

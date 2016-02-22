@@ -7,38 +7,43 @@
 /* ------------------------------------------------------------
  * 公共依赖模块 ／ 公共函数
  * ------------------------------------------------------------ */
-// function footerIsOverView() {
-//     var clientHeight = window.innerHeight || document.documentElement.clientHeight;
-//     var footerOffset = $('#footer').offset().top;
-//     return footerOffset > clientHeight - $('#footer').height();
-// }
+
+var Handlebars = require('handlebars');
 
 
 /* ------------------------------------------------------------
  * google analytics
  * ------------------------------------------------------------ */
- // require('autotrack');
- // window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
- // ga('create', 'UA-74094643-1', 'auto');
- // ga('require', 'autotrack');
- // ga('send', 'pageview');
+// require('autotrack');
+// window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+// ga('create', 'UA-74094643-1', 'auto');
+// ga('require', 'autotrack');
+// ga('send', 'pageview');
+
 
 
 /* ------------------------------------------------------------
- *	加载footer / 初始化footer
+ * handlebars helpers
+ * ------------------------------------------------------------ */
+Handlebars.registerHelper('autocomplete', function(value, options) {
+    var keyword = options.data.root.word;
+    var regex = new RegExp(keyword);
+    var content = value.replace(regex, '<strong>$&</strong>');
+    return new Handlebars.SafeString(content);
+});
+
+
+
+/* ------------------------------------------------------------
+ *	加载公共模版
  * ------------------------------------------------------------ */
 var footer = require('../tpl/footer.html');
+var navbar = require('../tpl/navbar.html');
+var autocomplete = require('../tpl/autoComplete.html');
 $(function() {
     $('#footer').html(footer);
-})
-
-/* ------------------------------------------------------------
- *	加载navbar
- * ------------------------------------------------------------ */
-
-var navbar = require('../tpl/navbar.html');
-$(function() {
     $('#navbar').html(navbar);
+    $('body').append(autocomplete);
 })
 
 
@@ -53,6 +58,58 @@ $(function() {
     $(document).on('mouseleave', '.navbar .dropdown', function() {
         $(this).find('.dropdown-toggle').dropdown('toggle');
     })
+})
+
+/* ------------------------------------------------------------
+ * 搜索自动补全
+ * ------------------------------------------------------------ */
+
+$(function() {
+    var isAutoComplete = false;
+    $('.search-input').on('input', function() {
+        var self = $(this);
+        var searchTxt = self.val();
+        $.when($.ajax('http://121.196.228.76/dc/search/suggestion/' + searchTxt))
+            .then(function(data) {
+                if (data) {
+                    isAutoComplete = true;
+                    var autocompleteHtml = $('#autocomplete-template').html();
+                    var autocompleteTemplate = Handlebars.compile(autocompleteHtml);
+                    $('.autocomplete-suggestions').html(autocompleteTemplate(data));
+                    $('.autocomplete-suggestions').show();
+                    setAutocompletePosition(self);
+                    listenResize(self);
+                }
+            });
+    })
+
+    $(window).on('click.autocomplete', function () {
+        if (!isAutoComplete) return;
+        isAutoComplete = false;
+        $('.autocomplete-suggestions').hide().html('');
+        removeListenResize();
+    })
+
+
+    function removeListenResize() {
+        $(window).off('resize.autocomplete');
+    }
+
+    function listenResize(self) {
+        $(window).on('resize.autocomplete', function () {
+            setAutocompletePosition(self);
+        })
+    }
+
+    function setAutocompletePosition(self) {
+        var rect = {
+            width: self.outerWidth(),
+            top: self.offset().top + self.outerHeight(),
+            left: self.offset().left
+        };
+
+        $('.autocomplete-suggestions').css(rect);
+    }
 })
 
 /* ------------------------------------------------------------

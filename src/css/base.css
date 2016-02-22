@@ -172,9 +172,33 @@ ul, li {
 }
 
 
+/*自动提示搜索*/
+.autocomplete-suggestions {
+    border: 1px solid #999;
+    background: #FFF;
+    overflow: auto;
+    position: absolute;
+    z-index: 9999;
+    a {
+        color: initial;
+        display: block;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    strong {
+        font-weight: normal;
+        color: var(--custom-color);
+    }
+}
 
-
-
+.autocomplete-suggestion {
+    font-size: 14px;
+    padding: 5px 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 
 
