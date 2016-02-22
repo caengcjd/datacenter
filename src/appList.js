@@ -58,6 +58,7 @@ function getAppName() {
 
 $(function () {
     var appName = getAppName();
+    var isLoaded = true;
     $('#appName').html(appName);
     $.when( $.ajax( 'http://121.196.228.76/dc/search/' + appName))
     .then(function( data, textStatus, jqXHR ) {
@@ -86,19 +87,19 @@ $(function () {
 
 
     $(document).on('click', '.next-page', loadAppList);
-
     function loadAppList() {
+        if (!isLoaded) return;
+        isLoaded = false;
         pager ++;
         $.when( $.ajax( 'http://121.196.228.76/dc/search/' + appName + '/' + pager))
         .then(function( data, textStatus, jqXHR ) {
-          const source = $('#app-template').html();
-          const template = Handlebars.compile(source);
-          $('.card-list').append(template(data.rank));
-          scrollSpyCards();
+            const source = $('#app-template').html();
+            const template = Handlebars.compile(source);
+            $('.card-list').append(template(data.rank));
+            scrollSpyCards();
+            isLoaded = true;
         });
     }
-
-
 })
 
 
