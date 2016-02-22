@@ -14,11 +14,11 @@
  require('./css/base.css');
  require('./css/topList.css');
 
-require('./js/dropdown.js');
-require('./js/jquery.waypoints.min.js');
-require('./js/jquery.lazyload.js');
-const Handlebars = require('handlebars');
-require('./js/base.js');
+ require('./js/dropdown.js');
+ require('./js/jquery.waypoints.min.js');
+ require('./js/jquery.lazyload.js');
+ const Handlebars = require('handlebars');
+ require('./js/base.js');
 
 
 

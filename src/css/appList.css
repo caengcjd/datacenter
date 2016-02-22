@@ -71,4 +71,11 @@
 
 .card-content {
     margin-left: 1rem;
+    p, h4 {
+        margin: 0;
+        margin-bottom: 5px;
+    }
+    a {
+        color: #000;
+    }
 }

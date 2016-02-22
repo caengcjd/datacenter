@@ -36,24 +36,29 @@
                 <span>{{arrayLength rank.apps}}</span>条)</p>
         </script>
 
+        <!-- card template -->
         <script id="app-template" type="text/x-handlebars-template">
             {{#each apps}}
             <li class="card flex transition">
                 <img class="card-img" src={{artworkUrl60}}/>
                 <div class="flex-1 card-content">
-                    <h4>{{appIndex @index}}、{{this.name}}</h4>
+                    <h4><a href="./appDetail.html?id={{appid}}">{{appIndex @index}}、{{this.name}}</a></h4>
                     <p>
-                        encent Technology (Shenzhen) Company Limited
+                        {{artistName}}
                     </p>
+                    <div style="font-size: 12px; color: #7a7a7a;">
+                        <span>{{genreValue}}</span>
+                    </div>
                 </div>
                 <div class="card-button flex-align-self-center">
                     <a href="#" class="btn btn-primary">添加到我的应用</a>
                 </div>
+
             </li>
             {{/each}}
         </script>
 
-        <!--  card template -->
+        <!--  cards template -->
         <script id="apps-template" type="text/x-handlebars-template">
             {{#if apps}}
             <ul class="card-list"></ul>
@@ -68,7 +73,7 @@
 
     <!-- word template -->
     <script id="word-template" type="text/x-handlebars-template">
-        <table class="table table-bordered text-center" style="width: 660px;table-layout: fixed">
+        <table class="table table-bordered text-center" style="table-layout: fixed">
             <tbody>
                 <tr>
                     <th class="word" style="width: 100px">关键字</th>
@@ -80,11 +85,11 @@
                     </th>
                 </tr>
                 <tr>
-                    <td>{{word}}</td>
-                    <td>
+                    <td style="vertical-align: middle;">{{word}}</td>
+                    <td style="vertical-align: middle">
                         <span class="text-danger">{{priority}}</span>
                     </td>
-                    <td class="text-left">
+                    <td class="text-left" style=" padding-bottom: 15px;">
                         <span class="text-danger" id="suggestions"></span>
                     </td>
                 </tr>
