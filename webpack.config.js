@@ -21,6 +21,7 @@ var common = {
         index: path.join(APP_PATH, 'index'),
         appList: path.join(APP_PATH, 'appList'),
         login: path.join(APP_PATH, 'login'),
+        login2: path.join(APP_PATH, 'login2'),
         register: path.join(APP_PATH, 'register'),
         topList: path.join(APP_PATH, 'topList'),
         appDetail: path.join(APP_PATH, 'appDetail'),
@@ -84,6 +85,11 @@ var common = {
             filename: 'login.html',
             template: './src/login.html',
             chunks: ['vendor', 'login'],
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'login2.html',
+            template: './src/login2.html',
+            chunks: ['vendor', 'login2'],
         }),
         new HtmlWebpackPlugin({
             filename: 'register.html',
