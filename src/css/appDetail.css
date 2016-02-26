@@ -100,7 +100,98 @@
     }
 }
 
-.chart {
+
+/* aso100-nav-select { */
+.nav-select {
+    margin: 9px 0 16px;
+    .navbar-nav {
+        float: left;
+        margin: 0;
+        .dropdown {
+            position: relative;
+            padding-top: 23px;
+            margin-left: 15px;
+        }
+        & > li > a {
+            position: relative;
+            bottom: 1px;
+            font-size: 12px;
+            color: #333333;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 6px 12px;
+            border-radius: 3px;
+        }
+
+        & > li > .dropdown-menu {
+            margin-top: 7px;
+            border-radius: 5px;
+            min-width: 100px;
+            background-color: #151e28;
+                &>.glyphicon {
+                    position: absolute;
+                    top: -10px;
+                    left: 12px;
+                }
+                &>.cascade {
+                    position: relative;
+                }
+                &>li>a .glyphicon-right {
+                    position: absolute;
+                    top: 7px;
+                    right: 10px;
+                    width: 7px;
+                    height: 10px;
+                    font-size: 12px;
+                }
+        }
+    }
+    .navbar-brand {
+        position: absolute;
+        top: 0;
+        font-size: 12px;
+        line-height: 1;
+        color: #666666;
+        padding: 5px;
+        height: initial;
+        left: 0;
+    }
+}
+
+
+ .dropdown-menu>li>a{
+     display: block;
+     padding: 3px 20px;
+     clear: both;
+     font-weight: 400;
+     line-height: 1.42857143;
+     color: #fff;
+     white-space: nowrap;
+     &:hover {
+         color: var(--custom-color);
+         text-decoration: none;
+         background-color: initial;
+     }
+ }
+
+
+.cascade-menu {
+    top: -37px;
+    left: 115px;
+    background-color: #151e28;
+    &>.glyphicon {
+        position: absolute;
+        top: 40px;
+        left: -10px;
+        color: #151e28;
+    }
+    &>li>a {
+        color: #d0d3d8;
+    }
+}
+
+/* aso100-chart */
+.cqaso-chart {
   width: 700px;
   height: 350px;
   margin: 0 auto;

@@ -5,14 +5,23 @@
 
 /* header */
 
-.header {
-    background-image: url('../images/banner.png');
-    height: 850px;
+html {
+    height: 100%;
 }
 
+body {
+    height: 100%;
+}
 
-.header .jumbotron {
-    padding-top: 21%;
+body {
+    background-image: url('../images/banner.png');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.jumbotron {
+    background-color: transparent;
     .form-control {
         width: 524px;
         height: 56px;

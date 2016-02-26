@@ -49,6 +49,7 @@ $(function () {
     }).then(function (data) {
         var genre = getGenreNameFromId(genres, urlParams.genre);
         var type = getTypeNameFromType(data, urlParams.type);
+        console.log(data);
         types = data;
         renderHandleBars($('#selectpicker-template'), {
             genres: genres,
@@ -134,7 +135,7 @@ function getGenreNameFromId(genres, id) {
 function getTypeNameFromType(types, keyword) {
     var result;
     types.some(function (prop) {
-        if (prop.type === keyword) {
+        if (prop.type.trim() === keyword.trim()) {
             result = prop;
             return true;
         }

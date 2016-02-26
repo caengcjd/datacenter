@@ -67,6 +67,7 @@ $(function () {
           window.location.href = './appDetail.html?id=' + appName;
       }
 
+
       const appHtml = $('#app-template').html();
       const appsHtml = $('#apps-template').html();
       const suggestionHtml = $('#suggestion-template').html();
@@ -113,7 +114,7 @@ function scrollSpyCards() {
         if (direction === 'down') {
             $(this.element).addClass('animation-slide-up');
         }
-    }, {offset: '80%'});
+    }, {offset: '100%'});
     $('.next-page').waypoint(function(direction) {
         if (direction === 'down') {
             $('.next-page').addClass('animation-slide-up');
