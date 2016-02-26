@@ -19,6 +19,7 @@
     margin: 2rem 0;
     box-shadow: 1px 1px 5px #CECDD0;
     padding: 2rem;
+    width: 100%;
     &:hover {
         background-color: #f5f5f5;
     }
@@ -44,7 +45,7 @@
 
 
 .tab-pane {
-    padding: 42px 38px 38px 38px;
+    padding: 42px 20px 15px 38px;
 }
 
 /* appinfo */
@@ -97,4 +98,10 @@
     img {
         height: 1em;
     }
+}
+
+.chart {
+  width: 700px;
+  height: 350px;
+  margin: 0 auto;
 }

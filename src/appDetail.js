@@ -19,7 +19,8 @@ require('./js/tooltip.js');
 require('./js/jquery.waypoints.min.js');
 const Handlebars = require('handlebars');
 require('./js/base.js');
-
+const echarts = require('echarts');
+require('echarts/chart/line.js');
 
 /* ------------------------------------------------------------
  * handlebars helpers
@@ -114,7 +115,6 @@ $(function () {
     if (!appID) return false;
     $.when($.ajax('http://121.196.228.76/dc/search/' + appID))
         .then(function ( data, textStatus, jqXHR ) {
-            console.log(data);
             var source = $('#app-intro-template').html();
             var source2 = $('#app-detail-template').html();
 
@@ -124,4 +124,108 @@ $(function () {
             $('#app－intro').append(template(data.app));
             $('#appDetail').append(template2(data.app));
         });
+})
+
+/* ------------------------------------------------------------
+ * ECharts
+ * ------------------------------------------------------------ */
+
+$(function () {
+    var options = {
+        title: '近7日在“daily”的搜索结果中排名趋势',
+        type: 'line',
+        xAxisList: [12, 13, 14, 15, 16, 17, 18, 19],
+        yAxisList: [6, 11, 16, 21]
+    };
+
+
+
+    function loadEchart(dom, options) {
+        var myChart = echarts.init(dom);
+
+        const option = {
+            title: {
+                text: options.title,
+                x: 'center',
+            },
+            tooltip: {
+                show: true,
+                formatter: function (obj) {
+                    return '排名:' + obj.value;
+                },
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: options.xAxisList,
+                    name: '日期',
+                    axisLabel: {
+                        show: true,
+                        'interval': 0,
+                        formatter: function (text) {
+                            return text + '日';
+                        },
+                    },
+                },
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    name: '排名',
+                    axisLabel: {
+                    },
+                },
+            ],
+            series: [
+                {
+                    name: '排名趋势',
+                    type: options.type,
+                    data: options.yAxisList,
+                    smooth:true,
+                    itemStyle: {
+                        normal: {
+                            lineStyle: {
+                                shadowColor : 'rgb(243, 187, 30)'
+                            }
+                        }
+                    },
+                    markPoint: {
+                        data: [
+                            {type: 'max', name: '最大值'},
+                            {type: 'min', name: '最小值'},
+                        ],
+                        effect: true,
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    formatter: function (obj) {
+                                        return obj.value + '';
+                                    },
+                                },
+                            },
+                        },
+                    },
+                    markLine: {
+                        data: [
+                            {type: 'average', name: '平均值'},
+                        ],
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    formatter: function (obj) {
+                                        return obj.value + '';
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            ],
+        };
+
+        myChart.setOption(option);
+    }
+
+    loadEchart($('#chart-1')[0], options);
+
 })

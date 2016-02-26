@@ -18,9 +18,17 @@ ul, li {
     opacity: 0;
 }
 
-.container, .header, .footer{
-    min-width: 1200px;
+.container{
+    width: 100%;
+    min-width: 800px;
+    max-width: 1000px;
 }
+
+.header, .footer {
+    min-width: 800px;
+}
+
+
 
 .btn-custom {
     background-color: var(--custom-color);
