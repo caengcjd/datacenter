@@ -46,14 +46,11 @@ a:hover {
 
 .btn-border-custom {
     border: 1px solid var(--custom-color);
-    max-width: 200px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     font-size: 13px;
     padding: 6px 8px;
-    margin-left: 6px;
-    margin-top: 10px;
     color: #666666;
 }
 

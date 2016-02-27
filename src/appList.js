@@ -18,6 +18,7 @@
  require('./js/jquery.waypoints.min.js');
  require('./js/base.js');
 
+
 var Handlebars = require('handlebars');
 var pager = 1;
 var pagerOffset = 20;
@@ -60,6 +61,7 @@ $(function () {
     var appName = getAppName();
     var isLoaded = true;
     $('#appName').html(appName);
+    renderSearchInput(appName);
     $.when( $.ajax( 'http://121.196.228.76/dc/search/' + appName))
     .then(function( data, textStatus, jqXHR ) {
       console.log(data);
@@ -83,11 +85,16 @@ $(function () {
       $('.word-table').html(template2(data.word));
       $('#suggestions').html(suggestionTemplate(data.word));
       $('.title').html(template3(data));
+      initToolTop();
       scrollSpyCards();
     });
 
 
-    $(document).on('click', '.next-page', loadAppList);
+    $(document).on('click.page', '.next-page', loadAppList);
+    $(document).on('click.suggestions', '#suggestions .btn', searchAppBySuggestion)
+
+
+    /* 加载app列表 */
     function loadAppList() {
         if (!isLoaded) return;
         isLoaded = false;
@@ -103,12 +110,25 @@ $(function () {
     }
 })
 
+/* 搜索关键字根据推荐词 */
+function searchAppBySuggestion(event) {
+    var keyword = $(event.target).text();
+    window.location = window.location.host + window.location.pathname + '?app=' + keyword;
+}
 
+/* 视图渲染：搜索框文字 */
+function renderSearchInput(value) {
+    $('#cqaso-header-search-input').val(window.decodeURIComponent(value));
+}
 
-/* ------------------------------------------------------------
- * jQuery滚动监听
- * ------------------------------------------------------------ */
+/* tooltop提示框 */
+ function initToolTop() {
+     $('[data-toggle="tooltip"]').tooltip({
+         container: 'body',
+     });
+ }
 
+/* jQuery滚动监听 */
 function scrollSpyCards() {
     $('.card').waypoint(function(direction) {
         if (direction === 'down') {

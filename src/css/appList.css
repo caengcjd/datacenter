@@ -37,6 +37,12 @@
     background-color: #E8E6E6;
 }
 
+#suggestions .btn {
+    max-width: 200px;
+    margin-left: 6px;
+    margin-top: 10px;
+}
+
 
 .app-no-result {
     font-size: 18px;

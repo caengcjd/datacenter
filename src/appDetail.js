@@ -17,10 +17,9 @@
 require('./js/tab.js');
 require('./js/tooltip.js');
 require('./js/jquery.waypoints.min.js');
-const Handlebars = require('handlebars');
+var Handlebars = require('handlebars');
 require('./js/base.js');
-const echarts = require('echarts');
-require('echarts/chart/line.js');
+var loadEchart = require('./js/loadEchart.js');
 
 /* ------------------------------------------------------------
  * handlebars helpers
@@ -96,15 +95,32 @@ Handlebars.registerHelper('description', function (value, options) {
           .replace(/s+/, second);
  }
 
-/* ------------------------------------------------------------
- * 初始化Tooltip
- * ------------------------------------------------------------ */
- $(function () {
+
+ function showEchart(dom, appid, word) {
+    if (dom.html()) {
+        ajaxGetasoHistory(appid, word)
+            .then(formateasoHistory)
+            .then(function(data) {
+                data.type = 'line';
+                data.title = '近7日在“daily”的搜索结果中排名趋势';
+                loadEchart(dom[0], data);
+            });
+    }
+}
+
+/* 渲染模版 */
+ function renderHandleBars(template, context, parent) {
+     const appHtml = template.html();
+     const appTemplate = Handlebars.compile(appHtml);
+     parent.append(appTemplate(context));
+ }
+
+ /* tooltop提示框 */
+  function initToolTop() {
       $('[data-toggle="tooltip"]').tooltip({
           container: 'body',
       });
- })
-
+  }
 
 /* ------------------------------------------------------------
  * 加载app
@@ -113,119 +129,49 @@ Handlebars.registerHelper('description', function (value, options) {
 $(function () {
     var appID = getAppID();
     if (!appID) return false;
-    $.when($.ajax('http://121.196.228.76/dc/search/' + appID))
+    ajaxGetasoInfo(appID)
         .then(function ( data, textStatus, jqXHR ) {
-            var source = $('#app-intro-template').html();
-            var source2 = $('#app-detail-template').html();
-
-            var template = Handlebars.compile(source);
-            var template2 = Handlebars.compile(source2);
-
-            $('#app－intro').append(template(data.app));
-            $('#appDetail').append(template2(data.app));
+            renderHandleBars($('#app-intro-template'), data.app, $('#app-intro'));
+            renderHandleBars($('#app-detail-template'), data.app, $('#appDetail'));
+            return ajaxGetasoPassword(appID);
+            // showEchart($('#chart-1'), 414478124, 'weibo微博');
+        })
+        .then(function functionName(data) {
+            renderHandleBars($('#app-keywords-template'), data.appRanks, $('#appKeywords-tbody'));
+            initToolTop();
         });
 })
 
+
 /* ------------------------------------------------------------
- * ECharts
+ * ajax请求
  * ------------------------------------------------------------ */
 
-$(function () {
-    var options = {
-        title: '近7日在“daily”的搜索结果中排名趋势',
-        type: 'line',
-        xAxisList: [12, 13, 14, 15, 16, 17, 18, 19],
-        yAxisList: [6, 11, 16, 21]
-    };
+/* 获取一个App详情 */
+function ajaxGetasoInfo(appid) {
+    return $.when($.ajax('http://121.196.228.76/dc/search/' + appid));
+}
 
+/* 获得app关键词列表 */
+function ajaxGetasoPassword(appid) {
+    return $.when($.ajax('http://121.196.228.76/dc/app/appasoword/' + appid));
+}
 
+/* 获取一个App对应的关键词的历史数据 */
+function ajaxGetasoHistory(appid, word) {
+    return $.when($.ajax('http://121.196.228.76/dc/app/appasohistory/' + appid + '?word=' + word));
+}
+/* 格式化历史数据 */
+function formateasoHistory(data) {
+    var result = {};
+    result.xAxisList = data.sort(function(a,b){
+        return a.x * 1 > b.x * 1;
+    }).map(function (value) {
+        return convertDate(value.x, 'YYYY-MM-DD');
+    });
+    result.yAxisList = data.map(function (value) {
+        return value.y;
+    })
 
-    function loadEchart(dom, options) {
-        var myChart = echarts.init(dom);
-
-        const option = {
-            title: {
-                text: options.title,
-                x: 'center',
-            },
-            tooltip: {
-                show: true,
-                formatter: function (obj) {
-                    return '排名:' + obj.value;
-                },
-            },
-            xAxis: [
-                {
-                    type: 'category',
-                    data: options.xAxisList,
-                    name: '日期',
-                    axisLabel: {
-                        show: true,
-                        'interval': 0,
-                        formatter: function (text) {
-                            return text + '日';
-                        },
-                    },
-                },
-            ],
-            yAxis: [
-                {
-                    type: 'value',
-                    name: '排名',
-                    axisLabel: {
-                    },
-                },
-            ],
-            series: [
-                {
-                    name: '排名趋势',
-                    type: options.type,
-                    data: options.yAxisList,
-                    smooth:true,
-                    itemStyle: {
-                        normal: {
-                            lineStyle: {
-                                shadowColor : 'rgb(243, 187, 30)'
-                            }
-                        }
-                    },
-                    markPoint: {
-                        data: [
-                            {type: 'max', name: '最大值'},
-                            {type: 'min', name: '最小值'},
-                        ],
-                        effect: true,
-                        itemStyle: {
-                            normal: {
-                                label: {
-                                    formatter: function (obj) {
-                                        return obj.value + '';
-                                    },
-                                },
-                            },
-                        },
-                    },
-                    markLine: {
-                        data: [
-                            {type: 'average', name: '平均值'},
-                        ],
-                        itemStyle: {
-                            normal: {
-                                label: {
-                                    formatter: function (obj) {
-                                        return obj.value + '';
-                                    },
-                                },
-                            },
-                        },
-                    },
-                },
-            ],
-        };
-
-        myChart.setOption(option);
-    }
-
-    loadEchart($('#chart-1')[0], options);
-
-})
+    return result;
+}

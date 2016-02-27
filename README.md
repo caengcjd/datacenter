@@ -1,4 +1,4 @@
-# 卓尚服饰
+# 数据中心
 
 ## TOC
 - [项目基本信息](#base_info)
@@ -19,23 +19,17 @@
 基本项目结构如下图
 
 ```asciidoc
-tian_ya_hai_jiao_api/         项目根目录
-├── css/                      包含网站所有的样式文件
-├── js/                       包含网站所有的js脚本文件
-├── images/  				  包含网站所有的静态图片资源
-├── fonts		              包含网站所有的网络字体资源
+datacenter/         项目根目录
+├── src/                      源代码
 ├── README.md				  包含对此此项目的一些介绍，就是当前说看到的内容
-├── main.html  			  首页
-├── main.html  			      引导页
-├── groupIntro.html  		  集团介绍
-├── webstore.html  		      旗下品牌、商城
-├── news.html  		          新闻中心
-├── newsDetail.html  		  新闻详情
-├── development.html  		  加入我们
-├── payment.html  		      薪酬福利
-└── learn.html 		          学习发展
+├── .gitignore  		      git忽略文件
+├── datacenter.nginx.conf     nginx配置文件
+├── webpack.config.js  		  webpack前端工作流配置文件
+├── doclets.yml  		      文档接口生成配置文件
+└── package.json 		      npm依赖包配置文件
 ```
 
 ## 参考、使用的项目
 
 * [Bootstrap](https://github.com/twbs/bootstrap) ([MIT License](https://github.com/twbs/bootstrap/blob/master/LICENSE))
+* [jquery](http://jquery.com) ([MIT License](https://github.com/jquery/jquery/blob/master/LICENSE.txt))

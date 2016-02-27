@@ -29,7 +29,7 @@
 
                  <!-- Tab panes -->
                  <div class="tab-content">
-                   <div role="tabpanel" class="tab-pane active app-info-tabpanel" id="appDetail"></div>
+                   <div role="tabpanel" class="margin-left-30px tab-pane active app-info-tabpanel" id="appDetail"></div>
                    <div role="tabpanel" class="tab-pane" id="appKeywords">
                        <div>
                            <div class="keywords-title">
@@ -65,40 +65,8 @@
                                        </th>
                                    </tr>
                                </thead>
-                               <tbody>
-                                   <tr>
-                                       <td>daily</td>
-                                       <td>1 <img src="./images/ico-triangle.png" style="margin: 0 1em;"/> 0</td>
-                                       <td>1111</td>
-                                       <td>5454</td>
-                                       <td>
-                                           <img src="./images/ico-trend.png" data-toggle="tooltip" data-placement="top" title="查看近期排名趋势"/>
-                                           <img src="./images/ico-top.png" alt="" class="margin-left-30px"/>
-                                       </td>
-                                   </tr>
-                                   <tr>
-                                       <td colspan="5">
-                                           <!-- <div class="nav-select clearfix">
-                                               <ul class="nav navbar-nav clearfix">
-                                                   <li class="dropdown">
-                                                       <span class="navbar-brand">类别</span>
-                                                       <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">
-                                                           <span class="caret eq-child"></span>
-                                                       </a>
-                                                       <ul class="dropdown-menu" role="menu">
-                                                           <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
-                                                           <li>
-                                                               <a href="./topList.html?genre={{urlParams.genre}}&amp;type={{this.type}}" class="active"></a>
-                                                           </li>
-                                                       </ul>
-                                                   </li>
-                                               </ul>
-                                           </div> -->
-                                           <div id="chart-1" class="cqaso-chart">
+                               <tbody id="appKeywords-tbody">
 
-                                           </div>
-                                       </td>
-                                   </tr>
                                </tbody>
                            </table>
 
@@ -110,6 +78,29 @@
             <div class="Liz-border-vertical" id="footer"></div>
         </div>
 
+
+    <!-- app-keywords  -->
+    <script id="app-keywords-template" type="text/x-handlebars-template">
+        {{#each this}}
+        <tr>
+            <td>{{word}}</td>
+            <td>{{rank}} <img src="./images/ico-triangle.png" style="margin: 0 1em;"/> 0</td>
+            <td>{{priority}}</td>
+            <td>{{searchRankCount}}</td>
+            <td>
+                <img src="./images/ico-trend.png" data-toggle="tooltip" data-placement="top" title="查看近期排名趋势"/>
+                <img src="./images/ico-top.png" alt="" class="margin-left-30px"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <div id="chart-${{@index}}" class="cqaso-chart">
+
+                </div>
+            </td>
+        </tr>
+        {{/each}}
+    </script>
 
     <!-- app-intro -->
     <script id="app-intro-template" type="text/x-handlebars-template">
@@ -131,7 +122,7 @@
                         <tbody>
                             <tr>
                                 <td class="aritistname">{{artistname}}</td>
-                                <td>{{appid}}</td>
+                                <td><a href="https://itunes.apple.com/cn/app/qq-yin-le-ting-gek-gefm-dian/id{{appid}}?mt=8">{{appid}}</a></td>
                                 <td>{{date currentversionreleasedate}}</td>
                                 <td>{{version}}</td>
                                 <td>{{file filesizebytes}}</td>
