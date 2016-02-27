@@ -3,4 +3,4 @@ name: datacenter
 flavor: jcdoc
 packageJson: package.json
 articles:
-    Overview: README.md
+    - Overview: README.md
